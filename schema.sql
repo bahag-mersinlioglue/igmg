@@ -1,0 +1,16 @@
+CREATE TABLE `prayer_times` (
+	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`cityName` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`date` DATE NULL DEFAULT NULL,
+	`fajr` TIME NULL DEFAULT NULL,
+	`sunrise` TIME NULL DEFAULT NULL,
+	`dhuhr` TIME NULL DEFAULT NULL,
+	`asr` TIME NULL DEFAULT NULL,
+	`maghrib` TIME NULL DEFAULT NULL,
+	`ishaa` TIME NULL DEFAULT NULL,
+	PRIMARY KEY (`id`) USING BTREE,
+	UNIQUE INDEX `cityName_date` (`cityName`, `date`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;

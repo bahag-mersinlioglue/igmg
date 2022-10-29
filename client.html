@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/revealjs/reveal.css">
+    <link rel="stylesheet" href="assets/revealjs/theme/white.css">
+    <style>
+        input,
+        button {
+            padding: 10px;
+        }
+    </style>
+    <script src="assets/revealjs/reveal.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById('next').addEventListener('click', function () {
+                
+                var slideContainer = document.getElementById('slidecontainer');
+
+                var section = document.createElement("section");
+                section.appendChild(document.createTextNode('blablabla' ))
+                slideContainer.appendChild(section);
+
+                Reveal.next();
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div id="slidecontainer" class="slides">
+            <section data-background-color="aquamarine">Slide 1</section>
+            <section data-background-color="aquamarine">Slide 2</section>
+        </div>
+    </div>
+
+    <button id="next" style="position: absolute; top: 20px; left: 20px; z-index:99999; color: black;">next</button>
+
+
+    <script>
+        Reveal.initialize();
+    </script>
+
+    <!-- <input type="text" id="message" />
+        <button onclick="transmitMessage()">Send</button>
+        <script>
+            // Create a new WebSocket.
+            var socket  = new WebSocket('ws://localhost:8080');
+
+            // Define the 
+            var message = document.getElementById('message');
+
+            function transmitMessage() {
+                socket.send( message.value );
+            }
+
+            socket.onmessage = function(e) {
+                alert( e.data );
+            }
+        </script> -->
+</body>
+
+</html>
