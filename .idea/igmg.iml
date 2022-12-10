@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/evenement/evenement" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/symfony/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/react/event-loop" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/react/dns" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/react/stream" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/react/promise-timer" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/react/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/react/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/react/socket" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/ratchet/rfc6455" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/cboden/ratchet" />
+      <excludeFolder url="file://$MODULE_DIR$/old/vendor/guzzlehttp/psr7" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
