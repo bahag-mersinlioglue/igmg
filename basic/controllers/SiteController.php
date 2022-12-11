@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Hadis;
 use app\models\HutbePage;
 use app\models\NotificationSearch;
 use app\models\PrayerTime;
@@ -58,6 +59,15 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+
+    /*
+     * Checks if a hutbe page is active
+     */
+    public function actionPageId() {
+        $page = HutbePage::find()->where(['active' => 1])->one();
+        $pageId = $page ? $page->id : 0;
+        return $this->asJson(['pageId' => $pageId]);
     }
 
     /**
@@ -126,8 +136,16 @@ class SiteController extends Controller
 
             $notifications = NotificationSearch::find()->where(['active' => 1])->all();
 
+            $hadisCnt = Hadis::find()->count();
+            $hadisOffset = rand(0, $hadisCnt-1);
+            $hadis = Hadis::find()
+                ->offset($hadisOffset)
+                ->limit(1)
+                ->one();
+
             return $this->render('dashboard', [
                 'langs' => ['de', 'tr', 'ar'],
+                'hadis' => $hadis,
                 'prayerTime' => $prayerTime,
                 'prayerTimeTomorrow' => $prayerTimeTomorrow,
                 'nextPrayerTimeInSeconds' => $nextPrayerTimeInSeconds,

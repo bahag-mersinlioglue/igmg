@@ -1,16 +1,38 @@
 $(document).ready(function () {
+    // countdown for next prayer time
     initCountdown();
 
-    var index = 0;
-    $('[data-lang]').eq(index).addClass('active');
+    // dil degisimi
+    initLanguageChangerTimer(5000);
 
+    // page checker for Hutbe and Dashboard
+    initPageChecker();
+});
+
+var initPageChecker = function(time = 3000) {
+
+    var currentPageId = $('[data-page-id]').eq(0).data('page-id');
+
+    setInterval(function () {
+
+        $.get('index.php?r=site/page-id', function (data) {
+            if (currentPageId != data.pageId) {
+                location.reload();
+            }
+        });
+
+    }, time);
+}
+
+var initLanguageChangerTimer = function(time = 10000) {
+    var index = 0;
     setInterval(function () {
         index = ++index % 3;
         $('[data-lang]').removeClass('active');
         $('[data-lang]').eq(index).addClass('active');
 
-    }, 3000);
-});
+    }, time);
+}
 
 var initCountdown = function () {
     var countDownElement = $('#countdown');
@@ -40,11 +62,11 @@ var initCountdown = function () {
         // Display the result in the element with id="demo"
         Array.from(document.getElementsByClassName("countdown-hours"))
             .forEach(function (element, index, array) {
-                element.innerHTML = hours;
+                element.innerHTML = hours < 10 ? '0' + hours : hours;
             });
         Array.from(document.getElementsByClassName("countdown-minutes"))
             .forEach(function (element, index, array) {
-                element.innerHTML = minutes;
+                element.innerHTML = minutes < 10 ? '0' + minutes : minutes;
             });
         Array.from(document.getElementsByClassName("countdown-seconds"))
             .forEach(function (element, index, array) {

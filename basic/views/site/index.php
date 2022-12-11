@@ -7,7 +7,7 @@
 $this->title = 'Hutbe';
 
 ?>
-<div class="site-index">
+<div class="hutbe-wrapper" data-page-id="<?= $page->id ?>">
 
     <?php foreach ($languages as $lang): ?>
 
