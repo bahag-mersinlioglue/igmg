@@ -85,7 +85,7 @@ class SiteController extends Controller
 
 
         if ($page) {
-            return $this->renderPartial('index', [
+            return $this->render('index', [
                 'languages' => $langs,
                 'page' => $page,
             ]);

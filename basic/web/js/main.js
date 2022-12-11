@@ -9,7 +9,7 @@ $(document).ready(function () {
     initPageChecker();
 
     Reveal.initialize({
-        autoSlide: 5000,
+        autoSlide: 3000,
         loop: true
     });
 });
