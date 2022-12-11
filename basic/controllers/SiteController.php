@@ -77,13 +77,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = 'client';
+
         $lang = Yii::$app->request->get('lang', 'de');
         $langs = explode(',', $lang);
         $page = HutbePage::find()->where(['active' => 1])->one();
 
 
         if ($page) {
-            return $this->render('index', [
+            return $this->renderPartial('index', [
                 'languages' => $langs,
                 'page' => $page,
             ]);

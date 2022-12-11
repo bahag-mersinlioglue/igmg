@@ -7,6 +7,11 @@ $(document).ready(function () {
 
     // page checker for Hutbe and Dashboard
     initPageChecker();
+
+    Reveal.initialize({
+        autoSlide: 5000,
+        loop: true
+    });
 });
 
 var initPageChecker = function(time = 3000) {

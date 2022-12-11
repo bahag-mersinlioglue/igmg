@@ -81,7 +81,7 @@ $trans = [
             </object>
 
         </div>
-        <div class="col">
+        <div class="col" style="font-size: 20px;">
             <div class="row">
                 <div class="col-2">
                     <?= $trans[$lang]['fajr'] ?>
@@ -142,16 +142,6 @@ $trans = [
         </div>
     </div>
 
-    <hr>
-    <h3>Bildirimler</h3>
-<?php foreach ($notifications as $notification): ?>
-    <div class="row">
-        <div class="col">
-            <?= $notification->getAttribute("title_$lang") ?>
-            <?= $notification->getAttribute("content_$lang") ?>
-        </div>
-    </div>
-<?php endforeach; ?>
 
 <?php if ($hadis): ?>
     <hr>
