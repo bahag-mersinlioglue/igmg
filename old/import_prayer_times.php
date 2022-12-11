@@ -15,7 +15,7 @@ $igmgApiUrl = 'https://live.igmgapp.org:8091/api/Calendar/GetPrayerTimes?cityID=
 $ch = curl_init($igmgApiUrl);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'X-API-Key: 50db7eaa4e0748e890920a910f84c4c9',
+    'X-API-Key: apikey',
 ));
 $response = curl_exec($ch);
 curl_close ($ch);

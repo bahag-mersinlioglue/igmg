@@ -31,6 +31,54 @@ class PrayerTimeController extends Controller
         );
     }
 
+    public function actionImport()
+    {
+        $apiKey = \Yii::$app->params['IGMG_API_KEY'];
+
+        $from = (new \DateTime())->format('d.m.Y');
+        $to = (new \DateTime())->modify('+1year')->format('d.m.Y');
+        $igmgApiUrl = "https://live.igmgapp.org:8091/api/Calendar/GetPrayerTimes?cityID=20038&from=$from&to=$to";
+        $ch = curl_init($igmgApiUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "X-API-Key: $apiKey",
+        ));
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        if (curl_error($ch) != null) {
+            exit('Igmg api can not be called');
+        }
+
+        $data = json_decode($response, true);
+        $data = $data['list'];
+
+        foreach ($data as $item) {
+
+            $date = \DateTime::createFromFormat('d.m.Y', $item['date']);
+
+            $prayerTime = PrayerTime::find()->where(['date' => $date->format('Y-m-d')])->one();
+            if (!$prayerTime)
+                $prayerTime = new PrayerTime();
+
+            $prayerTime->setAttributes([
+                'date' => $date->format('Y-m-d'),
+                'cityName' => $item['cityName'],
+                'fajr' => $item['fajr'],
+                'sunrise' => $item['sunrise'],
+                'dhuhr' => $item['dhuhr'],
+                'asr' => $item['asr'],
+                'maghrib' => $item['maghrib'],
+                'ishaa' => $item['ishaa'],
+            ]);
+            $prayerTime->save();
+
+        }
+
+        $cntData = count($data);
+        echo "Imported {$cntData}";
+    }
+
     /**
      * Lists all PrayerTime models.
      *
